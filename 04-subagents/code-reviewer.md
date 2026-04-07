@@ -43,13 +43,6 @@ For each issue:
 - **Suggested Fix**: Code example
 - **Impact**: How this affects the system
 
-Provide feedback organized by priority:
-1. Critical issues (must fix)
-2. Warnings (should fix)
-3. Suggestions (consider improving)
-
-Include specific examples of how to fix issues.
-
 ## Example Review
 
 ### Issue: N+1 Query Problem

@@ -3,272 +3,82 @@ name: blog-draft
 description: Draft a blog post from ideas and resources. Use when users want to write a blog post, create content from research, or draft articles. Guides through research, brainstorming, outlining, and iterative drafting with version control.
 ---
 
-## User Input
+## 用户输入
 
 ```text
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding. User should provide:
-- **Idea/Topic**: The main concept or theme for the blog post
-- **Resources**: URLs, files, or references to research (optional but recommended)
-- **Target audience**: Who the blog post is for (optional)
-- **Tone/Style**: Formal, casual, technical, etc. (optional)
+**你必须**在继续之前考虑用户输入。用户应提供：
+- **想法/主题**：博客文章的主要概念或主题
+- **资源**：研究的 URL、文件或参考（可选但推荐）
+- **目标受众**：博客文章面向谁（可选）
+- **语气/风格**：正式、非正式、技术性等（可选）
 
-**IMPORTANT**: If the user is requesting updates to an **existing blog post**, skip steps 0-8 and start directly at **Step 9**. Read the existing draft file(s) first, then proceed with the iteration process.
+**重要**：如果用户请求更新**现有博客文章**，跳过步骤 0-8，直接从**步骤 9**开始。
 
-## Execution Flow
+## 执行流程
 
-Follow these steps sequentially. **Do not skip steps or proceed without user approval where indicated.**
+按顺序遵循这些步骤。**不要跳过步骤或在需要用户批准的地方未经批准继续**。
 
-### Step 0: Create Project Folder
+### 步骤 0：创建项目文件夹
 
-1. Generate a folder name using format: `YYYY-MM-DD-short-topic-name`
-   - Use today's date
-   - Create a short, URL-friendly slug from the topic (lowercase, hyphens, max 5 words)
-
-2. Create the folder structure:
+1. 使用格式 `YYYY-MM-DD-short-topic-name` 生成文件夹名称
+2. 创建文件夹结构：
    ```
    blog-posts/
    └── YYYY-MM-DD-short-topic-name/
        └── resources/
    ```
+3. 确认文件夹创建后再继续。
 
-3. Confirm folder creation with user before proceeding.
+### 步骤 1：研究与资源收集
 
-### Step 1: Research & Resource Collection
+1. 在博客文章目录中创建 `resources/` 子文件夹
+2. 对于每个提供的资源：
+   - **URL**：获取并保存关键信息到 `resources/` 作为 markdown 文件
+   - **文件**：在 `resources/` 中读取并总结
+   - **主题**：使用网络搜索收集最新信息
+3. 向用户展示研究摘要。
 
-1. Create `resources/` subfolder in the blog post directory
+### 步骤 2：头脑风暴与澄清
 
-2. For each provided resource:
-   - **URLs**: Fetch and save key information to `resources/` as markdown files
-   - **Files**: Read and summarize in `resources/`
-   - **Topics**: Use web search to gather up-to-date information
+1. 根据想法和研究的资源，展示主要主题、可能角度、关键点和信息空白
+2. 提出澄清问题并**等待用户回复后再继续**
 
-3. For each resource, create a summary file in `resources/`:
-   - `resources/source-1-[short-name].md`
-   - `resources/source-2-[short-name].md`
-   - etc.
+### 步骤 3：提出大纲
 
-4. Each summary should include:
-   ```markdown
-   # Source: [Title/URL]
+1. 创建结构化大纲并向用户展示，**请求批准或修改**
 
-   ## Key Points
-   - Point 1
-   - Point 2
+### 步骤 4-7：保存、提交和写草稿
 
-   ## Relevant Quotes/Data
-   - Quote or statistic 1
-   - Quote or statistic 2
+- 保存批准的大纲到 `OUTLINE.md`
+- 提交到 git（如适用）
+- 编写完整博客文章草稿，保存为 `draft-v0.1.md`
+- **引用要求**：所有数据点、统计数据必须引用原始来源
 
-   ## How This Relates to Topic
-   Brief explanation of relevance
-   ```
+### 步骤 8-9：展示草稿供审查，迭代或定稿
 
-5. Present research summary to user.
+**如果用户请求更改**：记录修改，递增版本号，纳入反馈
 
-### Step 2: Brainstorm & Clarify
+**如果用户批准**：确认最终版本，总结创建过程
 
-1. Based on the idea and researched resources, present:
-   - **Main themes** identified from research
-   - **Potential angles** for the blog post
-   - **Key points** that should be covered
-   - **Gaps** in information that need clarification
+## 版本追踪
 
-2. Ask clarifying questions:
-   - What is the main takeaway you want readers to have?
-   - Are there specific points from the research you want to emphasize?
-   - What's the target length? (short: 500-800 words, medium: 1000-1500, long: 2000+)
-   - Any points you want to exclude?
+所有草稿通过增量版本控制保留：
+- `draft-v0.1.md` - 初始草稿
+- `draft-v0.2.md` - 第一轮反馈后
+- 等等。
 
-3. **Wait for user responses before proceeding.**
+## 质量提示
 
-### Step 3: Propose Outline
+- **Hook**：以问题、令人惊讶的事实或相关场景开头
+- **证据**：用研究数据支持声明，始终引用来源
+- **声音**：始终保持一致的语气
+- **CTA**：以明确的行动号召或发人深省的问题结尾
 
-1. Create a structured outline including:
+## 注意事项
 
-   ```markdown
-   # Blog Post Outline: [Title]
-
-   ## Meta Information
-   - **Target Audience**: [who]
-   - **Tone**: [style]
-   - **Target Length**: [word count]
-   - **Main Takeaway**: [key message]
-
-   ## Proposed Structure
-
-   ### Hook/Introduction
-   - Opening hook idea
-   - Context setting
-   - Thesis statement
-
-   ### Section 1: [Title]
-   - Key point A
-   - Key point B
-   - Supporting evidence from [source]
-
-   ### Section 2: [Title]
-   - Key point A
-   - Key point B
-
-   [Continue for all sections...]
-
-   ### Conclusion
-   - Summary of key points
-   - Call to action or final thought
-
-   ## Sources to Cite
-   - Source 1
-   - Source 2
-   ```
-
-2. Present outline to user and **ask for approval or modifications**.
-
-### Step 4: Save Approved Outline
-
-1. Once user approves the outline, save it to `OUTLINE.md` in the blog post folder.
-
-2. Confirm the outline has been saved.
-
-### Step 5: Commit Outline (if in git repo)
-
-1. Check if current directory is a git repository.
-
-2. If yes:
-   - Stage the new files: blog post folder, resources, and OUTLINE.md
-   - Create commit with message: `docs: Add outline for blog post - [topic-name]`
-   - Push to remote
-
-3. If not a git repo, skip this step and inform user.
-
-### Step 6: Write Draft
-
-1. Based on the approved outline, write the full blog post draft.
-
-2. Follow the structure from OUTLINE.md exactly.
-
-3. Include:
-   - Engaging introduction with hook
-   - Clear section headers
-   - Supporting evidence and examples from research
-   - Smooth transitions between sections
-   - Strong conclusion with takeaway
-   - **Citations**: All comparisons, statistics, data points, and factual claims MUST cite the original source
-
-4. Save the draft as `draft-v0.1.md` in the blog post folder.
-
-5. Format:
-   ```markdown
-   # [Blog Post Title]
-
-   *[Optional: subtitle or tagline]*
-
-   [Full content with inline citations...]
-
-   ---
-
-   ## References
-   - [1] Source 1 Title - URL or Citation
-   - [2] Source 2 Title - URL or Citation
-   - [3] Source 3 Title - URL or Citation
-   ```
-
-6. **Citation Requirements**:
-   - Every data point, statistic, or comparison MUST have an inline citation
-   - Use numbered references [1], [2], etc., or named citations [Source Name]
-   - Link citations to the References section at the end
-   - Example: "Studies show that 65% of developers prefer TypeScript [1]"
-   - Example: "React outperforms Vue in rendering speed by 20% [React Benchmarks 2024]"
-
-### Step 7: Commit Draft (if in git repo)
-
-1. Check if in git repository.
-
-2. If yes:
-   - Stage the draft file
-   - Create commit with message: `docs: Add draft v0.1 for blog post - [topic-name]`
-   - Push to remote
-
-3. If not a git repo, skip and inform user.
-
-### Step 8: Present Draft for Review
-
-1. Present the draft content to user.
-
-2. Ask for feedback:
-   - Overall impression?
-   - Sections that need expansion or reduction?
-   - Tone adjustments needed?
-   - Missing information?
-   - Specific edits or rewrites?
-
-3. **Wait for user response.**
-
-### Step 9: Iterate or Finalize
-
-**If user requests changes:**
-1. Note all requested modifications
-2. Return to Step 6 with the following adjustments:
-   - Increment version number (v0.2, v0.3, etc.)
-   - Incorporate all feedback
-   - Save as `draft-v[X.Y].md`
-   - Repeat Steps 7-8
-
-**If user approves:**
-1. Confirm the final draft version
-2. Optionally rename to `final.md` if user requests
-3. Summarize the blog post creation process:
-   - Total versions created
-   - Key changes between versions
-   - Final word count
-   - Files created
-
-## Version Tracking
-
-All drafts are preserved with incremental versioning:
-- `draft-v0.1.md` - Initial draft
-- `draft-v0.2.md` - After first round of feedback
-- `draft-v0.3.md` - After second round of feedback
-- etc.
-
-This allows tracking the evolution of the blog post and reverting if needed.
-
-## Output Files Structure
-
-```
-blog-posts/
-└── YYYY-MM-DD-topic-name/
-    ├── resources/
-    │   ├── source-1-name.md
-    │   ├── source-2-name.md
-    │   └── ...
-    ├── OUTLINE.md
-    ├── draft-v0.1.md
-    ├── draft-v0.2.md (if iterations)
-    └── draft-v0.3.md (if more iterations)
-```
-
-## Tips for Quality
-
-- **Hook**: Start with a question, surprising fact, or relatable scenario
-- **Flow**: Each paragraph should connect to the next
-- **Evidence**: Support claims with data from research
-- **Citations**: ALWAYS cite sources for:
-  - All statistics and data points (e.g., "According to [Source], 75% of...")
-  - Comparisons between products, services, or approaches (e.g., "X performs 2x faster than Y [Source]")
-  - Factual claims about market trends, research findings, or benchmarks
-  - Use inline citations with format: [Source Name] or [Author, Year]
-- **Voice**: Maintain consistent tone throughout
-- **Length**: Respect the target word count
-- **Readability**: Use short paragraphs, bullet points where appropriate
-- **CTA**: End with a clear call-to-action or thought-provoking question
-
-## Notes
-
-- Always wait for user approval at outlined checkpoints
-- Preserve all draft versions for history
-- Use web search for up-to-date information when URLs are provided
-- If resources are insufficient, ask user for more or suggest additional research
-- Adapt tone based on target audience (technical, general, business, etc.)
+- 在预定检查点始终等待用户批准
+- 保留所有草稿版本以供历史记录
+- 根据目标受众调整语气（技术性、一般性、商业性等）
