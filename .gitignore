@@ -87,3 +87,7 @@ promo-video/
 *.mp4
 
 update-plan*.md
+
+# Personal files
+CLAUDE.md
+.omc/
